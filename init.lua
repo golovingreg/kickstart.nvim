@@ -1,3 +1,4 @@
+vim.cmd 'language en_US'
 --[[
 
 Kickstart Guide:
@@ -112,12 +113,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -129,10 +124,7 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- My keymaps
 vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>we', function()
-  vim.cmd.w()
-  vim.cmd.Ex()
-end)
+vim.keymap.set('n', '<leader>w', vim.cmd.w)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -605,6 +597,14 @@ require('lazy').setup({
         ruff = {},
         rust_analyzer = {},
         ruby_lsp = {},
+        --ruby_lsp = {
+        --mason = false,
+        --cmd = { vim.fn.expand '~/.local/share/mise/shims/ruby-lsp' },
+        --},
+        --rubocop = {
+        --mason = false,
+        --cmd = { vim.fn.expand '~/.local/share/mise/shims/rubocop', '--lsp' },
+        --},
         gopls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
