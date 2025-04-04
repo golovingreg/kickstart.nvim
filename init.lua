@@ -124,7 +124,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- My keymaps
 vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>w', vim.cmd.w)
+vim.keymap.set('n', '<leader>we', function()
+  vim.cmd.w()
+  vim.cmd.Ex()
+end)
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -606,6 +609,7 @@ require('lazy').setup({
         --cmd = { vim.fn.expand '~/.local/share/mise/shims/rubocop', '--lsp' },
         --},
         gopls = {},
+        terraformls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
